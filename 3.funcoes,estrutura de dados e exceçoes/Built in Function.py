@@ -57,4 +57,36 @@ def nome_sobrenome():
     sobrenomes = ["SILVA", "souza", "Tavares"]
     nome_completo = list(map(lambda x, y: x.capitalize() + " " + y.capitalize(), nomes, sobrenomes))
     print(nome_completo)
-nome_sobrenome()
+def futbol():
+    gols_marcados = [2, 1, 3, 1, 0]
+    gols_sofridos = [1, 2, 2, 1, 3]
+    pontos = 0
+     
+    for x in range(0, len(gols_marcados)):
+        if gols_marcados[x] > gols_sofridos[x]:
+            pontos += 3
+        elif gols_marcados[x] < gols_sofridos[x]:
+            pontos += 0
+        else:
+            pontos += 1
+    aprov = (pontos / (len(gols_marcados) + len(gols_sofridos))) * 100
+    print(f"A pontuação do time foi de {pontos} e seu aproveitamento foi de {aprov}%")
+def viagem():
+    print('Informe qual a cidade deseja ir:\n[1]Salvador\n[2]Fortaleza\n[3]Natal\n[4]Aracaju')
+    escolha_cidade = int(input('Digite o número da cidade: '))
+    nomes_cidades = ["Salvador","Fortaleza","Aracaju","Natal"]
+    escolha_dias= int(input("Digite a quantidade de dias, de 1 a 4: "))
+    dias = [200, 400, 250, 300]
+    distancia = [850,800,300,550]
+    gasto_alimentacao = sum(dias[:escolha_dias])
+    gasto_gasolina = round((distancia[escolha_cidade-1]/ 14)*5)
+    gasto_hotel = 150*escolha_dias
+    gastos = gasto_alimentacao+gasto_gasolina+gasto_hotel
+    print(f"Com base nos gastos definidos, uma viagem de {escolha_dias} dias para {nomes_cidades[escolha_cidade-1]} saindo de Recife custaria {gastos} reais")
+def filtro ():
+    frase = "Aprender Python aqui na Alura é muito bom"
+    palavras = frase.split()
+    filtro = list(filter(lambda x: len(x) >= 5, palavras))
+    print(filtro)
+filtro()
+    
