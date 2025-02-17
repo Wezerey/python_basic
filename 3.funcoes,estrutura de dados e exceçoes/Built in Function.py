@@ -88,5 +88,4 @@ def filtro ():
     palavras = frase.split()
     filtro = list(filter(lambda x: len(x) >= 5, palavras))
     print(filtro)
-filtro()
     
