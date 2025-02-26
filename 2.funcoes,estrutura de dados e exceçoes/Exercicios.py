@@ -14,10 +14,6 @@ def qualitativo():
     print(notas_atualizadas)
 
 def Aquecimento ():
-    '''
-        Uso do Sum para somar todos itens dentro da lista
-        Um for e um if para identificar o menor e o maior numero da lista
-    '''
     lista = [16, 14, 63, 65, 17, 99, 70, 11, 20, 48, 79, 32, 17, 89, 12, 25, 66]
     soma = sum(lista)
     for i in range(len(lista)):
@@ -57,21 +53,53 @@ def nome_sobrenome():
     sobrenomes = ["SILVA", "souza", "Tavares"]
     nome_completo = list(map(lambda x, y: x.capitalize() + " " + y.capitalize(), nomes, sobrenomes))
     print(nome_completo)
-def futbol():
+def gols():
     gols_marcados = [2, 1, 3, 1, 0]
     gols_sofridos = [1, 2, 2, 1, 3]
+    gols_total = list(map(lambda x, y: x - y, gols_marcados, gols_sofridos))
     pontos = 0
-     
-    for x in range(0, len(gols_marcados)):
-        if gols_marcados[x] > gols_sofridos[x]:
-            pontos += 3
-        elif gols_marcados[x] < gols_sofridos[x]:
-            pontos += 0
-        else:
+    for x,y in enumerate(gols_total):
+        if y == 0:
             pontos += 1
-    aprov = (pontos / (len(gols_marcados) + len(gols_sofridos))) * 100
-    print(f"A pontuação do time foi de {pontos} e seu aproveitamento foi de {aprov}%")
+        elif y > 0:
+            pontos += 3
+        else:
+            pontos += 0
+        print(f'Rodada {x+1}: {y} gols, {pontos} pontos')
 def viagem():
+    dias = int(input("Quantas diárias? "))
+cidade = input("Qual a cidade? [Salvador, Fortaleza, Natal ou Aracaju]: ")
+distancias = [850, 800, 300, 550]
+passeio = [200, 400, 250, 300]
+km_l = 14
+gasolina = 5
+
+def gasto_hotel(dias):
+    return 150 * dias
+
+def gasto_gasolina(cidade):
+    if cidade == "Salvador":
+        return (2 * distancias[0] * gasolina) / km_l 
+    elif cidade == "Fortaleza":
+        return (2 * distancias[1] * gasolina) / km_l 
+    elif cidade == "Natal":
+        return (2 * distancias[2] * gasolina) / km_l 
+    elif cidade == "Aracaju":
+        return (2 * distancias[3] * gasolina) / km_l 
+
+def gasto_passeio(cidade, dias):
+    if cidade=="Salvador":
+        return passeio[0] * dias
+    elif cidade=="Fortaleza":
+        return passeio[1] * dias
+    elif cidade=="Natal":
+        return passeio[2] * dias 
+    elif cidade=="Aracaju":
+        return passeio[3] * dias 
+
+    gastos = gasto_hotel(dias) + gasto_gasolina(cidade) + gasto_passeio(cidade, dias)
+    print(f"Com base nos gastos definidos, uma viagem de {dias} dias para {cidade} saindo de Recife custaria {round(gastos, 2)} reais")
+def viagem_2():
     print('Informe qual a cidade deseja ir:\n[1]Salvador\n[2]Fortaleza\n[3]Natal\n[4]Aracaju')
     escolha_cidade = int(input('Digite o número da cidade: '))
     nomes_cidades = ["Salvador","Fortaleza","Aracaju","Natal"]
@@ -83,9 +111,8 @@ def viagem():
     gasto_hotel = 150*escolha_dias
     gastos = gasto_alimentacao+gasto_gasolina+gasto_hotel
     print(f"Com base nos gastos definidos, uma viagem de {escolha_dias} dias para {nomes_cidades[escolha_cidade-1]} saindo de Recife custaria {gastos} reais")
-def filtro ():
+def filtro():
     frase = "Aprender Python aqui na Alura é muito bom"
     palavras = frase.split()
     filtro = list(filter(lambda x: len(x) >= 5, palavras))
     print(filtro)
-    

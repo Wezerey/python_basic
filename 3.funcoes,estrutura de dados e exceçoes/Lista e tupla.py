@@ -1,3 +1,18 @@
+'''
+    a tupla serve para trabalhar com dados sensiveis, que nao podem ser modificados.
+    a lista pode ser usada para dados com possibilidade de modificacao
+'''
+
+# Criando uma tupla
+from random import randint
+estudantes = ["João", "Maria", "José", "Cláudia", "Ana"]
+def gera_codigo():
+    return f"{randint(0, 999)}"
+codigo_estudante = []
+for i in range(len(estudantes)):
+    codigo_estudante.append([estudantes[i], estudantes[i][0] + gera_codigo()])
+print(codigo_estudante)
+# Criando uma lista
 def nota():
     notas_turma = ['João', 8.0, 9.0, 10.0, 'Maria', 9.0, 7.0, 6.0, 'José', 3.4, 7.0, 7.0, 'Cláudia', 5.5, 6.6, 8.0, 'Ana', 6.0, 10.0, 9.5]
     nomes = []
@@ -14,4 +29,3 @@ def nota():
     for i in range(0, len(notas_juntas), 3):
         notas.append([notas_juntas[i],notas_juntas[i+1],notas_juntas[i+2]])
     print(notas[1][2])
-nota()
