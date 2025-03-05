@@ -42,3 +42,5 @@ def media_estudantes():
     medias_estudantes = [5.4, 4.1, 9.1, 5.3, 6.9, 3.1, 10.0, 5.0, 8.2, 5.5,8.1, 7.4, 5.0, 3.7, 8.1, 6.2, 6.1, 5.6, 6.7, 8.2]
     bolsistas = {nome: media for nome, media in zip(nomes_estudantes, medias_estudantes) if media >= 9.0}
     print(bolsistas)
+
+
